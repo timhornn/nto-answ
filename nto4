@@ -1,0 +1,21 @@
+import requests
+
+locations = requests.get('https://yupest2.pythonanywhere.com/api/v2.0/riviya/get_locations/').json()
+reviews = []
+negative = []
+positive = []
+
+for loc in locations['locations']:
+    reviews.extend(requests.get(f'https://yupest2.pythonanywhere.com/api/v2.0/riviya/get_reviews_by_id/?id={loc["id"]}').json())
+
+for r in reviews:
+    if r['rating'] < 4:
+        negative.append(r['review'])
+    else:
+        positive.append(r['review'])
+
+with open('negative.txt', 'w') as file:
+    file.write(''.join(negative))
+
+with open('positive.txt', 'w') as file:
+    file.write(''.join(positive))
