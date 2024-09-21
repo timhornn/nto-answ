@@ -1,0 +1,1 @@
+В https://machinelearningforkids.co.uk/ создать две метки, в одну импортировать positive.txt, в другую - negative.txt из архива. Обучить модель (Кнопка Узнать & Проверить), скопировать входные данные в enter a test text here. Скопировать выданную метку и число confidence, вставить в ответ.
